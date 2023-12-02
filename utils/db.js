@@ -8,12 +8,12 @@ class DBClient {
 
     const url = `mongodb://${this.host}:${this.port}`;
     MongoClient.connect(url, { useUnifiedTopology: true }, (err, client) => {
-        if (!err) {
-          this.database = client.db(database);
-        } else {
-          this.database = false;
-        }
-      });
+      if (!err) {
+        this.database = client.db(database);
+      } else {
+        this.database = false;
+      }
+    });
   }
 
   isAlive() {
